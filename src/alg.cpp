@@ -29,13 +29,9 @@ std::string infx2pstfx(const std::string& inf) {
             }
             result += ' '; 
             --i; 
-        }
-
-        else if (c == '(') {
+        } else if (c == '(') {
             stack.push(c);
-        }
-
-        else if (c == ')') {
+        } else if (c == ')') {
             while (!stack.isEmpty() && stack.peek() != '(') {
                 result += stack.pop();
                 result += ' ';
@@ -43,9 +39,7 @@ std::string infx2pstfx(const std::string& inf) {
             if (!stack.isEmpty()) {
                 stack.pop(); 
             }
-        }
-
-        else if (isOperator(c)) {
+        } else if (isOperator(c)) {
             while (!stack.isEmpty() &&
                    stack.peek() != '(' &&
                    getPriority(stack.peek()) >= getPriority(c)) {
@@ -83,9 +77,7 @@ int eval(const std::string& post) {
             }
             --i; 
             stack.push(num);
-        }
-
-        else if (isOperator(c)) {
+        } else if (isOperator(c)) {
             if (stack.isEmpty()) throw std::runtime_error("Invalid expression");
             int b = stack.pop();
             if (stack.isEmpty()) throw std::runtime_error("Invalid expression");
@@ -103,8 +95,8 @@ int eval(const std::string& post) {
                     break;
                 case '/':
                     if (b == 0) throw std::runtime_error("Division by zero");
-                    stack.push(a / b);
-                    break;
+            stack.push(a / b);
+            break;
             }
         }
     }
@@ -112,4 +104,5 @@ int eval(const std::string& post) {
     if (stack.isEmpty()) throw std::runtime_error("Empty result");
     return stack.pop();
 }
+
 
