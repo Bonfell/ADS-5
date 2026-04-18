@@ -2,7 +2,7 @@
 #include <string>
 #include <cctype>
 #include <stdexcept>
-#include "include/tstack.h"
+#include "../include/tstack.h"
 
 bool isOperator(char c) {
     return c == '+' || c == '-' || c == '*' || c == '/';
