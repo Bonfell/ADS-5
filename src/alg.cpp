@@ -27,8 +27,8 @@ std::string infx2pstfx(const std::string& inf) {
             while (i < inf.length() && std::isdigit(inf[i])) {
                 result += inf[i++];
             }
-            result += ' '; 
-            --i; 
+            result += ' ';
+            --i;
         } else if (c == '(') {
             stack.push(c);
         } else if (c == ')') {
@@ -37,7 +37,7 @@ std::string infx2pstfx(const std::string& inf) {
                 result += ' ';
             }
             if (!stack.isEmpty()) {
-                stack.pop(); 
+                stack.pop();
             }
         } else if (isOperator(c)) {
             while (!stack.isEmpty() &&
@@ -75,7 +75,7 @@ int eval(const std::string& post) {
             while (i < post.length() && std::isdigit(post[i])) {
                 num = num * 10 + (post[i++] - '0');
             }
-            --i; 
+            --i;
             stack.push(num);
         } else if (isOperator(c)) {
             if (stack.isEmpty()) throw std::runtime_error("Invalid expression");
